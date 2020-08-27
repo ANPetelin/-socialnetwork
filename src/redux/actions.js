@@ -1,5 +1,5 @@
-import { CREATE_POST, FETCH_POSTS, SHOW_LOADER, HIDE_LOADER } from "./types";
-import axios from 'axios';
+import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS } from "./types";
+
 
 export function createPost(post) {
     return {
@@ -8,13 +8,20 @@ export function createPost(post) {
     }
 }
 
+export function showLoader() {
+    return {
+        type: SHOW_LOADER
+    }
+}
+
+export function hideLoader() {
+    return {
+        type: HIDE_LOADER
+    }
+}
+
 export function fetchPosts() {
-    return async dispatch => {
-        dispatch({type: SHOW_LOADER})
-        axios.get('https://jsonplaceholder.typicode.com/posts?_limit=5')
-        .then(res => {
-            dispatch({type: HIDE_LOADER})
-            dispatch({type: FETCH_POSTS, payload: res.data})
-        })        
+    return {
+        type: REQUEST_POSTS
     }
 }
