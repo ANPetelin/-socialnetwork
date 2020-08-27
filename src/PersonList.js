@@ -17,7 +17,7 @@ export default class PersonList extends React.Component {
   render() {
     return (
       <ol>
-        { this.state.posts.map(person => <li>{person.title}</li>) }
+        { this.state.posts.map(person => person.id < 11 ? <li key={person.id}>{person.title}</li> : null) }
       </ol>
     )
   }
