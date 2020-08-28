@@ -1,4 +1,4 @@
-import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS } from "./types";
+import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS, REQUEST_MESSAGE } from "./types";
 
 
 export function createPost(post) {
@@ -23,5 +23,11 @@ export function hideLoader() {
 export function fetchPosts() {
     return {
         type: REQUEST_POSTS
+    }
+}
+
+export function fetchMessage() {
+    return {
+        type: REQUEST_MESSAGE
     }
 }
