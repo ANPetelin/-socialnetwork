@@ -11,7 +11,7 @@ function App() {
   useEffect(() => {
     dispatch(fetchPosts());
     dispatch(fetchMessage())
-  },[])
+  },[dispatch])
 
   return (
     <div className="App">

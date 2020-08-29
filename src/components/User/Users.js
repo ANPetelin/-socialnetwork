@@ -18,12 +18,11 @@ const Users = ({state}) => {
       else newUsers[index] = {name: names[index], data: [state.posts.fetchedPost[i]], message: []};
     } 
     setUsers(newUsers)
-  },[]);
+  },[state]);
 
   return (
       <div>
-        <button onClick={() => console.log(state.message.message)}>sdhyvj</button>
-          {users.map((user, index) => <div key={index}><User user={user}/></div>)}
+          {users.map((user, index) => <div key={index}><User user={user} messages = {state.message.message}/></div>)}
       </div>    
   );
 };

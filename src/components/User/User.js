@@ -4,8 +4,6 @@ import { Comment, Avatar, Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
-const text = `Bla bla bla`;
-
 const Users = (props) => {
   return (
       <div className = "user__field">
@@ -26,12 +24,21 @@ const Users = (props) => {
             } />
                 <Collapse accordion>
                 <Panel header="Коментарии" key="1">
-                  <p>{text}</p>
+                  {props.messages.map((message, index) => {
+                    let match = props.user.data.some(s => s.id === message.postId);
+                    if (match) {
+                    return <div key = {index}><p>{index+1} - {message.body}</p><hr/></div>
+                    }
+                  })}
                 </Panel>
               </Collapse>
+              <button onClick={() => console.log(props.messages)}>sdhyvj</button>
       </div>    
   );
 };
 
 export default Users;
+
+
+
 
