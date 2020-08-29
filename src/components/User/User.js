@@ -1,13 +1,16 @@
 import React from 'react';
-import {connect} from 'react-redux';
 import './User.scss';
-import { Comment, Avatar } from 'antd';
+import { Comment, Avatar, Collapse } from 'antd';
 
-const User = () => {
+const { Panel } = Collapse;
+
+const text = `Bla bla bla`;
+
+const Users = (props) => {
   return (
       <div className = "user__field">
           <Comment
-            author={<p>Andrey</p>}
+            author={<p>{props.user.name}</p>}
             avatar={
                 <Avatar
                 src="./logo192.png"
@@ -15,22 +18,20 @@ const User = () => {
                 />
             }
             content={
-                <p>
-                Привет мир
-                </p>
+                <Collapse accordion>
+                <Panel header="Посты" key="1">
+                  {props.user.data.map((data, index) => <div key = {index}><p>{data.title}</p><hr/></div>)}
+                </Panel>
+              </Collapse>
             } />
+                <Collapse accordion>
+                <Panel header="Коментарии" key="1">
+                  <p>{text}</p>
+                </Panel>
+              </Collapse>
       </div>    
   );
 };
 
-const mapStateToProps = state => {
-    return {
-        state: state
-    }
-}
+export default Users;
 
-// const mapDispatchToProps = dispatch => ({
-//     createPost: newPost => dispatch(createPost(newPost))
-//   })
-
-export default connect(mapStateToProps, null)(User);

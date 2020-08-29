@@ -1,3 +1,12 @@
+.user__field {
+  width: 90%;
+  background-color: white;
+  height: auto;
+  margin: 0 auto;
+  margin-top: 20px;
+  padding-bottom: 20px;
+}
+
 .comment-action {
   padding-left: 8px;
   cursor: 'auto';
@@ -8,12 +17,7 @@
   padding-left: 0;
 }
 
-.user__field {
-  width: 90%;
-  background-color: whitesmoke;
-  height: 300px;
-  margin: 0 auto;
-}
+
 
 .ant-comment-avatar {
   width: 80px;
@@ -34,5 +38,15 @@
     font-size: 20px;
     padding-left: 20px;
     font-weight: bold;
+    text-align: center;
   }
+}
+
+.ant-collapse {
+  width: 80%;
+  margin: 0 auto;
+}
+
+.ant-comment-content-detail, .ant-collapse-header, .ant-collapse-content-box {
+  text-align: left;
 }

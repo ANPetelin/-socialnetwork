@@ -11,7 +11,7 @@ export function* sagaWatcher() {
 function* sagaMesage() {   
     try {
         yield put(showLoader());
-        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/comments?_limit=5');    
+        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/comments?_limit=200');    
         yield put({type: FETCH_MESSAGE, payload: payload.data})
         yield put(hideLoader());
     } 
@@ -23,7 +23,7 @@ function* sagaMesage() {
 function* sagaPost() {   
     try {
         yield put(showLoader());
-        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/posts?_limit=5');    
+        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/posts?_limit=40');    
         yield put({type: FETCH_POSTS, payload: payload.data})
         yield put(hideLoader());
     } 
