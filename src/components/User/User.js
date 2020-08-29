@@ -33,7 +33,6 @@ const Users = (props) => {
                   })}
                 </Panel>
               </Collapse>
-              <button onClick={() => console.log(props.messages)}>sdhyvj</button>
       </div>    
   );
 };
