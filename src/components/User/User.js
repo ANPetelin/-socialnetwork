@@ -27,8 +27,9 @@ const Users = (props) => {
                   {props.messages.map((message, index) => {
                     let match = props.user.data.some(s => s.id === message.postId);
                     if (match) {
-                    return <div key = {index}><p>{index+1} - {message.body}</p><hr/></div>
+                    return <div key = {index}><p>{index + 1} - {message.body}</p><hr/></div>
                     }
+                    return null
                   })}
                 </Panel>
               </Collapse>
