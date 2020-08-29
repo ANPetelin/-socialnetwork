@@ -1,5 +1,38 @@
-.container {
-    width: 80%;
-    height: 300px;
-    margin: 0 auto;
+.comment-action {
+  padding-left: 8px;
+  cursor: 'auto';
+}
+
+[class*='-col-rtl'] .comment-action {
+  padding-right: 8px;
+  padding-left: 0;
+}
+
+.user__field {
+  width: 90%;
+  background-color: whitesmoke;
+  height: 300px;
+  margin: 0 auto;
+}
+
+.ant-comment-avatar {
+  width: 80px;
+  height: 80px;
+  padding-left: 30px;
+  span {
+    width: 70px;
+    height: 70px;
   }
+  img {
+    width: 70px;
+  height: 70px;
+  }
+}
+
+.ant-comment-content-author-name {
+  p {
+    font-size: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+  }
+}

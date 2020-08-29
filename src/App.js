@@ -6,7 +6,7 @@ import Message from './components/Message';
 import User from './components/User/User';
 import {connect} from 'react-redux';
 import {createPost} from './redux/actions';
-import { Spin, Button } from 'antd';
+import { Button } from 'antd';
 
 // async function func(url) {  
 //   return axios.get(url)
@@ -56,7 +56,6 @@ function App(props) {
       <hr></hr>
       <Message/>
       <User/>
-      <Spin />
     </div>
   );
 }

@@ -1,15 +1,27 @@
 import React from 'react';
 import {connect} from 'react-redux';
 import './User.scss';
-import { Avatar } from 'antd';
+import { Comment, Avatar } from 'antd';
 
-const User = (props) => {
-    return (
-        <div className = "container">
-            <Avatar src="./logo192.png" />
-        </div>
-    )
-}
+const User = () => {
+  return (
+      <div className = "user__field">
+          <Comment
+            author={<p>Andrey</p>}
+            avatar={
+                <Avatar
+                src="./logo192.png"
+                alt="Andrey"
+                />
+            }
+            content={
+                <p>
+                Привет мир
+                </p>
+            } />
+      </div>    
+  );
+};
 
 const mapStateToProps = state => {
     return {
