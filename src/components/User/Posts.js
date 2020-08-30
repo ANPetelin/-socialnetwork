@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import { BrowserRouter as Router, Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments, fetchPosts } from '../../redux/actions';
@@ -6,11 +6,10 @@ import './User.scss';
 import { Comment, Avatar, Collapse, Spin } from 'antd';
 import moment from 'moment';
 
-//const history = require("history").createBrowserHistory();
-
 const { Panel } = Collapse;
 
 const Posts = () => {
+  const [openCommentsId, setOpenCommentsId] = useState(null)
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts.fetchedPost);
 
@@ -24,10 +23,14 @@ const Posts = () => {
     newPosts = [...newPosts, posts[index]];
   }
 
+  const clickOnComment = (id) => {
+    setOpenCommentsId(id)
+  }
+
   if (posts.length) {
     return (
       <div>
-        {newPosts.map(post => <div key = {post.id}><ComponentUser post={post}/></div>)}
+        {newPosts.map(post => <div key = {post.id}><ComponentUser post={post} id={openCommentsId} clickOnComment={clickOnComment.bind(this)}/></div>)}
       </div>    
   );}  
 
@@ -52,9 +55,10 @@ const ComponentUser = (props) => {
           <p>{props.post.body}</p>
           } />
       </Router>
-      <div onClick = {() => dispatch(fetchComments(props.post.userId))}>
-        <Collapse accordion>
-        <Panel header="Коментарии" key="1">
+        <Collapse accordion defaultActiveKey={[props.id]} onChange={() => {
+          dispatch(fetchComments(props.post.userId));
+          props.clickOnComment(props.post.userId)}}>
+        <Panel header="Коментарии" key={props.post.userId}>
           {comments.map(comment => <Comment
               key={comment.id}
               author={comment.email}
@@ -64,10 +68,11 @@ const ComponentUser = (props) => {
             />)  
           }</Panel>
         </Collapse>
-      </div>     
 </div>     
   );
 };
+
+
 
 export default Posts;
 

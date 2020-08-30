@@ -11,7 +11,6 @@ export function* sagaWatcher() {
 function* sagaMesage(user) { 
     try {
         const payload = yield call(axiosUrl, `https://jsonplaceholder.typicode.com/comments?postId=${user.id}`);  
-        console.log(payload)    
         yield put({type: FETCH_MESSAGE, payload: payload.data})
     } 
     catch {
