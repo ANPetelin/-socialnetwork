@@ -1,44 +1,17 @@
 import React from 'react';
 import './User.scss';
-import { Comment, Avatar, Collapse } from 'antd';
+import { useParams } from 'react-router-dom';
 
-const { Panel } = Collapse;
-
-const Users = (props) => {
+const Users = () => {  
+  let { id } = useParams();
+  console.log(id)
   return (
       <div className = "user__field">
-          <Comment
-            author={<p>{props.user.name}</p>}
-            avatar={
-                <Avatar
-                src="./logo192.png"
-                alt="Andrey"
-                />
-            }
-            content={
-                <Collapse accordion>
-                <Panel header="Посты" key="1">
-                  {props.user.data.map((data, index) => <div key = {index}><p>{data.title}</p><hr/></div>)}
-                </Panel>
-              </Collapse>
-            } />
-                <Collapse accordion>
-                <Panel header="Коментарии" key="1">
-                  {props.messages.map((message, index) => {
-                    let match = props.user.data.some(s => s.id === message.postId);
-                    if (match) {
-                    return <div key = {index}><p>{index + 1} - {message.body}</p><hr/></div>
-                    }
-                    return null
-                  })}
-                </Panel>
-              </Collapse>
+          <h1>User: {id}</h1>
       </div>    
   );
 };
 
 export default Users;
-
-
 
 

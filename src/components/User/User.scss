@@ -50,3 +50,13 @@
 .ant-comment-content-detail, .ant-collapse-header, .ant-collapse-content-box {
   text-align: left;
 }
+
+
+.ant-comment-content-detail p {
+    width: 80%;
+    margin: 0 auto;
+    white-space: normal;
+    border: 1px solid #b3b3b3;
+    border-radius: 3px;
+    padding: 10px;
+}

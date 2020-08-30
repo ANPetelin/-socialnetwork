@@ -23,7 +23,7 @@ function* sagaMesage() {
 function* sagaPost() {   
     try {
         yield put(showLoader());
-        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/posts?_limit=40');    
+        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/posts');    
         yield put({type: FETCH_POSTS, payload: payload.data})
         yield put(hideLoader());
     } 
