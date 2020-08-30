@@ -13,7 +13,7 @@ function App() {
   const loading = useSelector(state => state.app.loading);
   useEffect(() => {
     dispatch(fetchPosts());
-  },[dispatch])
+  },[])
   return (
     <div className="App">
       <Router history = {history}>

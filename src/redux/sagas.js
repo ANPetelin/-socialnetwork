@@ -10,10 +10,8 @@ export function* sagaWatcher() {
 
 function* sagaMesage() {   
     try {
-        yield put(showLoader());
         const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/comments?_limit=200');    
         yield put({type: FETCH_MESSAGE, payload: payload.data})
-        yield put(hideLoader());
     } 
     catch {
         alert('Что то пошло не так');
