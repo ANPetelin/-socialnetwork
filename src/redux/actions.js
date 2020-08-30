@@ -26,8 +26,9 @@ export function fetchPosts() {
     }
 }
 
-export function fetchMessage() {
+export function fetchComments(id) {
     return {
-        type: REQUEST_MESSAGE
+        type: REQUEST_MESSAGE,
+        id: id
     }
 }

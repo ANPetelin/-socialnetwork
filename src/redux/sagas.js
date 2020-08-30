@@ -8,9 +8,10 @@ export function* sagaWatcher() {
     yield takeEvery(REQUEST_MESSAGE, sagaMesage)
 }
 
-function* sagaMesage() {   
+function* sagaMesage(user) { 
     try {
-        const payload = yield call(axiosUrl, 'https://jsonplaceholder.typicode.com/comments?_limit=200');    
+        const payload = yield call(axiosUrl, `https://jsonplaceholder.typicode.com/comments?postId=${user.id}`);  
+        console.log(payload)    
         yield put({type: FETCH_MESSAGE, payload: payload.data})
     } 
     catch {
