@@ -7,7 +7,7 @@ import { rootReducer } from './redux/reducers/rootReducer';
 import './index.scss';
 import App from './App';
 import createSagaMiddleware from 'redux-saga';
-import { sagaWatcher } from './redux/sagas/sagas';
+import { sagaWatcher } from './redux/sagas/sagaWatcher';
 
 const saga = createSagaMiddleware();
 

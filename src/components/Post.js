@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { Comment, Avatar, Collapse } from 'antd';
 import moment from 'moment';
-import { fetchComments } from '../../redux/actions';
+import { fetchComments } from '../redux/actions';
 import './User.scss';
 
 const { Panel } = Collapse;

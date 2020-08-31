@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Spin  } from 'antd';
-import { fetchPosts, fetchUsers } from '../../redux/actions';
+import { fetchPosts, fetchUsers } from '../redux/actions';
 import Post from './Post';
 import './User.scss';
 
