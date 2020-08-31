@@ -1,9 +1,9 @@
 import React, { useEffect, useState } from 'react';
-import { BrowserRouter as Router, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments, fetchPosts } from '../../redux/actions';
 import './User.scss';
-import { Comment, Avatar, Collapse, Spin } from 'antd';
+import { Comment, Avatar, Collapse, Spin  } from 'antd';
 import moment from 'moment';
 
 const { Panel } = Collapse;
@@ -42,7 +42,6 @@ const ComponentUser = (props) => {
   const comments = useSelector(state => state.comments.comments);
   return (
     <div className = "user__field">
-      <Router>
         <Comment
           author={<Link to={'/user/' + props.post.userId}><p>UserId: {props.post.userId}</p></Link>}
           avatar={
@@ -54,7 +53,6 @@ const ComponentUser = (props) => {
           content={
           <p>{props.post.body}</p>
           } />
-      </Router>
         <Collapse accordion defaultActiveKey={[props.id]} onChange={() => {
           dispatch(fetchComments(props.post.userId));
           props.clickOnComment(props.post.userId)}}>
