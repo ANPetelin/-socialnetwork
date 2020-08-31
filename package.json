@@ -2,7 +2,7 @@
   "name": "socalnetwork",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://anpetelin.github.io/socialnetwork",
+  "homepage": "https://anpetelin.github.io",
   "dependencies": {
     "@testing-library/jest-dom": "^4.2.4",
     "@testing-library/react": "^9.5.0",
