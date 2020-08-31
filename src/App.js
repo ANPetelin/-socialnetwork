@@ -1,8 +1,8 @@
 import React from 'react';
-import './App.scss';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import Posts from './components/User/Posts';
 import User from './components/User/User';
-import {  BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import './App.scss';
 
 function App() {  
   return (

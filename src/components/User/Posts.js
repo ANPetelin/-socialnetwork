@@ -1,10 +1,10 @@
 import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchComments, fetchPosts, fetchUsers } from '../../redux/actions';
-import './User.scss';
 import { Comment, Avatar, Collapse, Spin  } from 'antd';
 import moment from 'moment';
+import { fetchComments, fetchPosts, fetchUsers } from '../../redux/actions';
+import './User.scss';
 
 const { Panel } = Collapse;
 
@@ -47,9 +47,9 @@ const Post = (props) => {
         <Comment
           author={<Link to={'/user/' + props.user.id}><p>{props.user.username}</p></Link>}
           avatar={
-              <Avatar
+            <Link to={'/user/' + props.user.id}><Avatar
               src='./avatar.jpg'
-              alt={<Link to={'/user/' + props.user.id}>{props.user.username}</Link>} />
+              alt={props.user.username} /></Link>
           }    
           content={
           <p>{props.post.body}</p>

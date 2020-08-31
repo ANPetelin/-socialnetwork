@@ -1,9 +1,8 @@
 import React from 'react';
-import './User.scss';
 import { useParams } from 'react-router-dom';
 import { useSelector } from 'react-redux';
+import { Card, Collapse } from 'antd';
 import './User.scss';
-import { Card, Avatar, Collapse } from 'antd';
 
 const { Panel } = Collapse;
 
@@ -14,13 +13,10 @@ const Users = () => {
   return (
       <div className = "user__field">
         <Card title={user.name} style={{ width: 600 }}>
-          <Avatar
-              src='./avatar.jpg'
-              alt={user.username} />
           <p>Псевдоним: {user.username}</p>
           <p>Телефон: {user.phone}</p>
-          <p>Email: {user.email}</p>
-          <p>Website: {user.website}</p>
+          <p>Email: <a href={'mailto:' + user.email}>{user.email}</a></p>
+          <p>Website: <a href={`http://${user.website}`}>{user.website}</a></p>
           <Collapse accordion>
             <Panel header="Подробнее" key={'1'}> 
               <p>Адрес проживания:</p>

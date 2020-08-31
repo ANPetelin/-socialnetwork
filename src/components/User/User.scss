@@ -52,11 +52,23 @@
   text-align: left;
 }
 
-
-.ant-comment-content-detail p {
+.ant-comment-content-detail {
+  p {
     width: 80%;
     margin: 0 auto;
     white-space: normal;
     font-size: 18px;
     padding: 10px;
+  }
+}
+
+.ant-card-body{
+  text-align: left;
+  > p {
+    padding-left: 60px;
+  }
+}
+
+.ant-card-bordered {
+  margin: 0 auto;
 }
