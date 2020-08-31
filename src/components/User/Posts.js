@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { fetchComments, fetchPosts, fetchUsers } from '../../redux/actions';
@@ -9,7 +9,6 @@ import moment from 'moment';
 const { Panel } = Collapse;
 
 const Posts = () => {
-  const [openCommentsId, setOpenCommentsId] = useState(null)
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts.fetchedPost);
   const users = useSelector(state => state.users.users);
@@ -25,19 +24,13 @@ const Posts = () => {
     newPosts = [...newPosts, posts[index]];
   }
 
-  const clickOnComment = (id) => {
-    openCommentsId === id ? setOpenCommentsId(null) : setOpenCommentsId(id)    
-  }
-
   if (posts.length && users.length) {
     return (
       <div>
         {newPosts.map(post => {
             let user = users.filter(u => u.id === post.userId);
             return <div key = {post.id}>
-                <ComponentUser user = {user[0]} post={post} 
-                              id={openCommentsId} 
-                              clickOnComment={clickOnComment.bind(this)}/>
+                <Post user = {user[0]} post={post} />
           </div>})}
       </div>    
   );}  
@@ -45,9 +38,10 @@ const Posts = () => {
   else return <Spin/>
 };
 
-const ComponentUser = (props) => {
+const Post = (props) => {
   const dispatch = useDispatch();
-  const comments = useSelector(state => state.comments.comments);
+  const comments = useSelector(state => state.comments.comments.filter(comment => comment.postId === props.user.id));
+
   return (
     <div className = "user__field">
         <Comment
@@ -60,20 +54,15 @@ const ComponentUser = (props) => {
           content={
           <p>{props.post.body}</p>
           } />
-        <Collapse accordion activeKey={[props.id]} onChange={() => {
-          dispatch(fetchComments(props.user.id));
-          props.clickOnComment(props.user.id)}}>
-        <Panel header="Коментарии" key={props.user.id}>
-          {comments.map(comment => {
-            let match = props.user.id === comment.postId;
-            return !match ? <Spin key={comment.id}/> :
-          <Comment
+        <Collapse accordion onChange={() => dispatch(fetchComments(props.user.id))}>          
+          <Panel header="Коментарии" key={props.user.id}>
+          {comments.map(comment => <Comment
               key={comment.id}
               author={comment.email}
               avatar={'./avatar.jpg'}
               content={comment.name}
               datetime={moment().subtract(1, 'days').fromNow()}
-            />})  
+            />)  
           }</Panel>
         </Collapse>
 </div>     

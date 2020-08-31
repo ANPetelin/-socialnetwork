@@ -9,9 +9,9 @@ export function* sagaWatcher() {
     yield takeEvery(REQUEST_COMMENTS, sagaComments)    
 }
 
-function* sagaComments(user) { 
+function* sagaComments(post) { 
     try {
-        const payload = yield call(axiosUrl, `https://jsonplaceholder.typicode.com/comments?postId=${user.id}`);  
+        const payload = yield call(axiosUrl, `https://jsonplaceholder.typicode.com/comments?postId=${post.id}`);  
         yield put({type: FETCH_COMMENTS, payload: payload.data})
     } 
     catch {

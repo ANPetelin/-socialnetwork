@@ -12,7 +12,9 @@ function App() {
             <Route exact path="/">
               <Posts/>
             </Route>   
-            <Route path="/user/:id" children={<User/>}/>
+            <Route path="/user/:id">
+              <User />
+            </Route>
         </Switch>
       </Router>
     </div>
