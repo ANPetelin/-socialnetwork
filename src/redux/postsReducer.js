@@ -5,7 +5,7 @@ const initialState = {
     fetchedPost: []
 }
 
-export const postsReducers = (state=initialState, action) => {    
+export const postsReducer = (state=initialState, action) => {    
     switch(action.type) {        
         case CREATE_POST:            
             return { ...state, posts: state.posts.concat([action.payload]) };            

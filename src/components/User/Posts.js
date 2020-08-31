@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import { Link } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
-import { fetchComments, fetchPosts } from '../../redux/actions';
+import { fetchComments, fetchPosts, fetchUsers } from '../../redux/actions';
 import './User.scss';
 import { Comment, Avatar, Collapse, Spin  } from 'antd';
 import moment from 'moment';
@@ -12,9 +12,11 @@ const Posts = () => {
   const [openCommentsId, setOpenCommentsId] = useState(null)
   const dispatch = useDispatch();
   const posts = useSelector(state => state.posts.fetchedPost);
+  const users = useSelector(state => state.users.users);
 
   useEffect(() => {
     dispatch(fetchPosts());
+    dispatch(fetchUsers())
   },[dispatch]);
   
   let newPosts = [];
@@ -24,13 +26,19 @@ const Posts = () => {
   }
 
   const clickOnComment = (id) => {
-    setOpenCommentsId(id)
+    openCommentsId === id ? setOpenCommentsId(null) : setOpenCommentsId(id)    
   }
 
-  if (posts.length) {
+  if (posts.length && users.length) {
     return (
       <div>
-        {newPosts.map(post => <div key = {post.id}><ComponentUser post={post} id={openCommentsId} clickOnComment={clickOnComment.bind(this)}/></div>)}
+        {newPosts.map(post => {
+            let user = users.filter(u => u.id === post.userId);
+            return <div key = {post.id}>
+                <ComponentUser user = {user[0]} post={post} 
+                              id={openCommentsId} 
+                              clickOnComment={clickOnComment.bind(this)}/>
+          </div>})}
       </div>    
   );}  
 
@@ -43,22 +51,21 @@ const ComponentUser = (props) => {
   return (
     <div className = "user__field">
         <Comment
-          author={<Link to={'/user/' + props.post.userId}><p>UserId: {props.post.userId}</p></Link>}
+          author={<Link to={'/user/' + props.user.id}><p>{props.user.username}</p></Link>}
           avatar={
               <Avatar
               src='./avatar.jpg'
-              alt={<Link to={'/user/' + props.post.userId}>{props.post.userId}</Link>}
-              />
+              alt={<Link to={'/user/' + props.user.id}>{props.user.username}</Link>} />
           }    
           content={
           <p>{props.post.body}</p>
           } />
         <Collapse accordion activeKey={[props.id]} onChange={() => {
-          dispatch(fetchComments(props.post.userId));
-          props.clickOnComment(props.post.userId)}}>
-        <Panel header="Коментарии" key={props.post.userId}>
+          dispatch(fetchComments(props.user.id));
+          props.clickOnComment(props.user.id)}}>
+        <Panel header="Коментарии" key={props.user.id}>
           {comments.map(comment => {
-            let match = props.post.userId === comment.postId;
+            let match = props.user.id === comment.postId;
             return !match ? <Spin key={comment.id}/> :
           <Comment
               key={comment.id}

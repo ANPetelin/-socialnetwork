@@ -1,4 +1,4 @@
-import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS, REQUEST_MESSAGE } from "./types";
+import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS, REQUEST_COMMENTS, REQUEST_USERS } from "./types";
 
 
 export function createPost(post) {
@@ -28,7 +28,13 @@ export function fetchPosts() {
 
 export function fetchComments(id) {
     return {
-        type: REQUEST_MESSAGE,
+        type: REQUEST_COMMENTS,
         id: id
+    }
+}
+
+export function fetchUsers() {
+    return {
+        type: REQUEST_USERS,
     }
 }

@@ -1,16 +1,13 @@
-import { CREATE_POST, FETCH_POSTS } from "./types";
+import { FETCH_USERS } from "./types";
 
 const initialState = {
-    posts: [],
-    fetchedPost: []
+    users: []
 }
 
-export const postsReducers = (state=initialState, action) => {    
-    switch(action.type) {        
-        case CREATE_POST:            
-            return { ...state, posts: state.posts.concat([action.payload]) };            
-        case FETCH_POSTS:
-            return { ...state, fetchedPost: action.payload };
+export const usersReducer = (state=initialState, action) => {    
+    switch(action.type) {                  
+        case FETCH_USERS:
+            return { ...state, users: action.payload };
         default:
             return state;
     }    

@@ -1,4 +1,4 @@
-import { FETCH_MESSAGE } from "./types";
+import { FETCH_COMMENTS } from "./types";
 
 const initialState = {
     comments: []
@@ -6,7 +6,7 @@ const initialState = {
 
 export const commentsReducer = (state=initialState, action) => {    
     switch(action.type) {                  
-        case FETCH_MESSAGE:
+        case FETCH_COMMENTS:
             return { ...state, comments: action.payload };
         default:
             return state;
