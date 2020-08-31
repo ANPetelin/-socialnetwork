@@ -53,17 +53,20 @@ const ComponentUser = (props) => {
           content={
           <p>{props.post.body}</p>
           } />
-        <Collapse accordion defaultActiveKey={[props.id]} onChange={() => {
+        <Collapse accordion activeKey={[props.id]} onChange={() => {
           dispatch(fetchComments(props.post.userId));
           props.clickOnComment(props.post.userId)}}>
         <Panel header="Коментарии" key={props.post.userId}>
-          {comments.map(comment => <Comment
+          {comments.map(comment => {
+            let match = props.post.userId === comment.postId;
+            return !match ? <Spin key={comment.id}/> :
+          <Comment
               key={comment.id}
               author={comment.email}
               avatar={'./avatar.jpg'}
               content={comment.name}
               datetime={moment().subtract(1, 'days').fromNow()}
-            />)  
+            />})  
           }</Panel>
         </Collapse>
 </div>     
