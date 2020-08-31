@@ -1,4 +1,4 @@
-import { FETCH_COMMENTS } from "./types";
+import { FETCH_COMMENTS } from "../types";
 
 const initialState = {
     comments: []

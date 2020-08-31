@@ -1,6 +1,6 @@
-import {takeEvery, put, call} from 'redux-saga/effects';
-import { showLoader, hideLoader } from './actions';
-import { REQUEST_POSTS, FETCH_POSTS, REQUEST_COMMENTS, FETCH_COMMENTS, REQUEST_USERS, FETCH_USERS } from "./types";
+import { takeEvery, put, call } from 'redux-saga/effects';
+import { showLoader, hideLoader } from '../actions';
+import { REQUEST_POSTS, FETCH_POSTS, REQUEST_COMMENTS, FETCH_COMMENTS, REQUEST_USERS, FETCH_USERS } from "../types";
 import axios from 'axios';
 
 export function* sagaWatcher() {
