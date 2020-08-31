@@ -7,8 +7,8 @@ const initialState = {
 export const commentsReducer = (state=initialState, action) => {    
     switch(action.type) {                  
         case FETCH_COMMENTS:
-            let newComments = state.comments.filter(comments => comments.postId !== action.payload[0].postId)            
-            return { ...state, comments: [...newComments, ...action.payload] };
+            let oldComments = state.comments.filter(comments => comments.postId !== action.payload[0].postId)            
+            return { ...state, comments: [...oldComments, ...action.payload] };
         default:
             return state;
     }    

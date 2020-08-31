@@ -12,6 +12,7 @@ const Users = () => {
   let user = users.filter(u => u.id === +id)[0];
   return (
       <div className = "user__field">
+        {!users.length ? <h1>Вы не выбрали пользователя, перейдите на основную страницу</h1> : 
         <Card title={user.name} style={{ width: 600 }}>
           <p>Псевдоним: {user.username}</p>
           <p>Телефон: {user.phone}</p>
@@ -30,7 +31,7 @@ const Users = () => {
               <p>Должность: {user.company.bs}</p>
             </Panel>
             </Collapse>
-        </Card>
+        </Card>}
       </div>    
   );
 };
