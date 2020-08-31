@@ -3,7 +3,6 @@ import { FETCH_COMMENTS, } from "../types";
 import requestData from './requestData';
 
 export default function* (id) { 
-    console.log(id);
     try {
         const payload = yield call(requestData, `https://jsonplaceholder.typicode.com/comments?postId=${id}`);  
         yield put({type: FETCH_COMMENTS, payload: payload.data})
