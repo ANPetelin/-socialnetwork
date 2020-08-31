@@ -1,12 +1,5 @@
-import { CREATE_POST, SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS, REQUEST_COMMENTS, REQUEST_USERS } from "./types";
+import { SHOW_LOADER, HIDE_LOADER, REQUEST_POSTS, REQUEST_COMMENTS, REQUEST_USERS } from "./types";
 
-
-export function createPost(post) {
-    return {
-        type: CREATE_POST,
-        payload: post
-    }
-}
 
 export function showLoader() {
     return {
