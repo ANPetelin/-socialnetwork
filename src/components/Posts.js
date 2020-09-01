@@ -11,9 +11,11 @@ const Posts = () => {
   const users = useSelector(state => state.users.users);
 
   useEffect(() => {
-    dispatch(fetchPosts());
-    dispatch(fetchUsers())
-  },[dispatch]);
+    if(!posts.length) {
+      dispatch(fetchPosts());
+      dispatch(fetchUsers())
+    }
+  });
   
   let newPosts = [];
   for( let i = 0; i < 10; i++) {
@@ -25,10 +27,8 @@ const Posts = () => {
     return (
       <div>
         {newPosts.map(post => {
-            let user = users.filter(u => u.id === post.userId);
-            return <div key = {post.id}>
-                <Post user = {user[0]} post={post} />
-          </div>})}
+            return <Post key = {post.id} post={post} />
+        })}
       </div>    
   );}  
   else return <Spin/>

@@ -9,7 +9,7 @@ export default function* rootSaga(data) {
         case REQUEST_POSTS:
             return yield fork(sagaPosts);
         case REQUEST_COMMENTS:
-            return yield fork(sagaComments, data.id);
+            return yield fork(sagaComments, data);
         case REQUEST_USERS:
             return yield fork(sagaUsers);
         default:

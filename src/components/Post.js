@@ -10,22 +10,23 @@ const { Panel } = Collapse;
 
 export default (props) => {
   const dispatch = useDispatch();
-  const comments = useSelector(state => state.comments.comments.filter(comment => comment.postId === props.user.id));
+  const user = useSelector(state => state.users.users.filter(user => user.id === props.post.userId))[0];
+  const comments = useSelector(state => state.comments.comments.filter(comment => comment.postId === props.post.id));
 
   return (
     <div className = "user__field">
         <Comment
-          author={<Link to={'/user/' + props.user.id}><p>{props.user.username}</p></Link>}
+          author={<Link to={'/user/' + user.id}><p>{user.username}</p></Link>}
           avatar={
-            <Link to={'/user/' + props.user.id}><Avatar
+            <Link to={'/user/' +user.id}><Avatar
               src='./avatar.jpg'
-              alt={props.user.username} /></Link>
+              alt={user.username} /></Link>
           }    
           content={
           <p>{props.post.body}</p>
           } />
-        <Collapse accordion onChange={() => dispatch(fetchComments(props.user.id))}>          
-          <Panel header="Коментарии" key={props.user.id}>
+        <Collapse accordion onChange={() => dispatch(fetchComments(props.post.id))}>          
+          <Panel header="Коментарии" key={user.id}>
           {comments.map(comment => <Comment
               key={comment.id}
               author={comment.email}

@@ -1,18 +1,29 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { useParams } from 'react-router-dom';
-import { useSelector } from 'react-redux';
-import { Card, Collapse } from 'antd';
+import { useSelector, useDispatch } from 'react-redux';
+import { fetchPosts, fetchUsers } from '../redux/actions';
+import { Card, Collapse, Spin } from 'antd';
 import './User.scss';
 
 const { Panel } = Collapse;
 
-const Users = () => {    
+const User = () => {    
+  
+  const dispatch = useDispatch();
   const users = useSelector(state => state.users.users);
   let { id } = useParams();
   let user = users.filter(u => u.id === +id)[0];
+
+  useEffect(() => {
+    if (!users.length) {
+      dispatch(fetchPosts());
+      dispatch(fetchUsers())
+    }    
+  });
+
   return (
-      <div className = "user__field">
-        {!users.length ? <h1>Вы не выбрали пользователя, перейдите на основную страницу</h1> : 
+      <div>
+        {!users.length ? <Spin/> : 
         <Card title={user.name} style={{ width: 600 }}>
           <p>Псевдоним: {user.username}</p>
           <p>Телефон: {user.phone}</p>
@@ -36,6 +47,6 @@ const Users = () => {
   );
 };
 
-export default Users;
+export default User;
 
 
