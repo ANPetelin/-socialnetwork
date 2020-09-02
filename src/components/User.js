@@ -24,12 +24,12 @@ const User = () => {
   return (
       <div>
         {!users.length ? <Spin/> : 
-        <Card title={user.name} style={{ width: 600 }}>
+        <Card title={user.name}>
           <p>Псевдоним: {user.username}</p>
           <p>Телефон: {user.phone}</p>
           <p>Email: <a href={'mailto:' + user.email}>{user.email}</a></p>
           <p>Website: <a href={`http://${user.website}`}>{user.website}</a></p>
-          <Collapse accordion>
+          <Collapse accordion expandIconPosition="right">
             <Panel header="Подробнее" key={'1'}> 
               <p>Адрес проживания:</p>
               <p>Город: {user.address.city}</p>

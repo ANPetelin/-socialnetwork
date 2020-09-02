@@ -25,7 +25,7 @@ function App() {
           </Switch>
         </Router>
       </Content>
-      <Footer>facebook</Footer>
+      <Footer>однокашники</Footer>
     </Layout>
   );
 }

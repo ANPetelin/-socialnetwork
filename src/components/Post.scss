@@ -1,0 +1,65 @@
+.user__field {
+  background-color: white;;
+  height: auto;
+  margin: 0 auto;
+  text-align: center;
+  line-height: normal;
+  color: rgba(0, 0, 0, 0.45);
+}
+
+.ant-comment-avatar {
+  width: 80px;
+  height: 80px;
+  padding-left: 30px;
+  span {
+    width: 70px;
+    height: 70px;
+  }
+  img {
+    width: 70px;
+    height: 70px;
+  }
+  >img {
+    width: 40px;
+    height: 40px;
+  }
+}
+
+.ant-comment-content-detail {
+  p {
+    width: 80%;
+    margin: 0 auto;
+    white-space: normal;
+    font-size: 18px;
+    padding: 10px;
+  }
+}
+
+.ant-comment-actions {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+
+.ant-comment-content-author {
+  width: 200px;
+  p {
+    font-size: 20px;
+    padding-left: 20px;
+    font-weight: bold;
+    text-align: left;
+  }
+}
+
+.ant-collapse {
+  width: 100%;
+  margin: 0 auto;
+  background: transparent;
+  border: 0px;
+  text-align: right;
+}
+
+.ant-comment-content-detail, .ant-collapse-content-box {
+  text-align: left;
+}

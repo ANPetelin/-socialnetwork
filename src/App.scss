@@ -9,8 +9,9 @@
     font-size: 30px;
 }
 
-.ant-layout-header, .ant-layout-footer {
+.ant-layout-footer {
     @extend %headerfootertemplate;
+    font-size: 20px;
 }
 
 .ant-layout-content {
@@ -19,4 +20,9 @@
     background: whitesmoke;
     color: #fff;
     margin: 0 auto;
+    overflow: auto;
+}
+
+.ant-layout {
+    height: 100%;
 }

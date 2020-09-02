@@ -5,7 +5,7 @@ import { Comment, Avatar, Collapse, Tooltip } from 'antd';
 import { DislikeOutlined, LikeOutlined, DislikeFilled, LikeFilled } from '@ant-design/icons';
 import moment from 'moment';
 import { fetchComments } from '../redux/actions';
-import './User.scss';
+import './Post.scss';
 
 const { Panel } = Collapse;
 
