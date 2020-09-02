@@ -1,24 +1,13 @@
 .user__field {
-  width: 90%;
-  background-color: white;
+  background-color: white;;
   height: auto;
   margin: 0 auto;
-  margin-top: 20px;
-  padding-bottom: 20px;
+  margin-top: 5px;
   text-align: center;
+  line-height: normal;
+  color: rgba(0, 0, 0, 0.45);
+  border-radius: 10px;
 }
-
-.comment-action {
-  padding-left: 8px;
-  cursor: 'auto';
-}
-
-[class*='-col-rtl'] .comment-action {
-  padding-right: 8px;
-  padding-left: 0;
-}
-
-
 
 .ant-comment-avatar {
   width: 80px;
@@ -30,25 +19,36 @@
   }
   img {
     width: 70px;
-  height: 70px;
+    height: 70px;
   }
 }
 
-.ant-comment-content-author-name {
+.ant-comment-actions {
+  float: left;
+  margin: 0;
+  padding: 0;
+}
+
+
+.ant-comment-content-author {
+  width: 200px;
   p {
     font-size: 20px;
     padding-left: 20px;
     font-weight: bold;
-    text-align: center;
+    text-align: left;
   }
 }
 
 .ant-collapse {
   width: 80%;
   margin: 0 auto;
+  background: transparent;
+  border: 0px;
+  text-align: right;
 }
 
-.ant-comment-content-detail, .ant-collapse-header, .ant-collapse-content-box {
+.ant-comment-content-detail, .ant-collapse-content-box {
   text-align: left;
 }
 

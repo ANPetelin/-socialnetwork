@@ -1,23 +1,32 @@
 import React from 'react';
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Layout } from 'antd';
 import Posts from './components/Posts';
 import User from './components/User';
 import './App.scss';
 
-function App() {  
+const { Header, Footer, Content } = Layout;
+
+function App() {
   return (
-    <div className="App">
-      <Router>
-        <Switch>          
+    <Layout>
+      <Header>
+        <p>Социальная сеть</p>
+      </Header>
+      <Content className="content">
+        <Router>
+          <Switch>
             <Route exact path="/">
-              <Posts/>
-            </Route>   
+              <Posts />
+            </Route>
             <Route path="/user/:id">
               <User />
             </Route>
-        </Switch>
-      </Router>
-    </div>
+          </Switch>
+        </Router>
+      </Content>
+      <Footer>facebook</Footer>
+    </Layout>
   );
 }
 
