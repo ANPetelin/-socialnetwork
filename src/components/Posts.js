@@ -31,7 +31,7 @@ const Posts = () => {
         })}
       </div>    
   );}  
-  else return <Spin/>
+   else return <Spin className="spin" tip="Loading..." size="large"/>
 };
 
 export default Posts;

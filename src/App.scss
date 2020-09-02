@@ -1,17 +1,20 @@
+
 %headerfootertemplate {
     background: #7dbcea;
     color: #fff;
-    text-align: center;
 }
 
 .ant-layout-header {
     @extend %headerfootertemplate;
     font-size: 30px;
+    text-align: center;
 }
 
 .ant-layout-footer {
     @extend %headerfootertemplate;
     font-size: 20px;
+    padding: 10px 50px;
+    text-align: right;
 }
 
 .ant-layout-content {

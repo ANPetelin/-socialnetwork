@@ -60,6 +60,38 @@
   text-align: right;
 }
 
+.ant-comment-inner {
+  padding: 0;
+}
+
 .ant-comment-content-detail, .ant-collapse-content-box {
   text-align: left;
+  width: 80%;
+  margin: 20px 5%;
+}
+
+.spin {
+  text-align: center;
+  width: 100%;
+  padding-top: 30%;
+}
+
+/* width */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #f1f1f1; 
+}
+ 
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888; 
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555; 
 }
